@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Product from '../../components/product/Product'
 import axios from "../../api";
-import home from '../../images/home.png'
+import Herocontent from "../../components/hero/Herocontent";
+import Catalog from "../../components/catalog/Catalog";
+import Section from "../../components/section/Section";
+import Corusel from "../../components/corusel/Corusel";
 
 const Home = () => {
     const [data, setData] = useState([]);
-    const [count, setCount] = useState(54);
+    const [count, setCount] = useState(8);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -29,11 +32,12 @@ const Home = () => {
 
     return (
         <>
+            <Herocontent />
+            <Catalog />
+            <Section />
             <Product data={data} />
-            <div className="container">
-                <img className="homeimg" src={home} alt="" />
-            </div>
-            <Product data={data.slice(0, 12)} />
+            {/* <Product data={data.slice(0, 12)} /> */}
+            <Corusel />
         </>
     )
 }

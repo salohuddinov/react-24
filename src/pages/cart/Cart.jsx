@@ -9,9 +9,6 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import not from '../../images/empty.png'
-import logo1 from '../../images/card.png'
-import logo2 from '../../images/paypal.png'
-import logo3 from '../../images/bank.png'
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';

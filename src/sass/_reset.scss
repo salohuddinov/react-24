@@ -35,7 +35,15 @@ a {
 
 .container {
   width: 100%;
-  max-width: 1355px;
+  max-width: 1316px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin: 0 auto;
+}
+
+.container2 {
+  width: 100%;
+  max-width: 1475px;
   padding-right: 20px;
   padding-left: 20px;
   margin: 0 auto;

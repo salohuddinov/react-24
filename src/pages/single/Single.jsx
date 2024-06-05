@@ -8,7 +8,6 @@ import { API_URL } from '../../static'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { FaFacebookF } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
-import Star from '../../components/star/Star';
 import Product from '../../components/product/Product';
 import SingleBtm from '../../components/singlebtm/SingleBtm';
 
@@ -72,7 +71,7 @@ function Single() {
                     <div className="single__right">
                         <h2>Nike Airmax 270 React</h2>
                         <div className="starwrapper">
-                            <Star />
+
                             <p>({product?.rating} Review)</p>
                             <h2>Submit a review</h2>
                         </div>
@@ -124,7 +123,7 @@ function Single() {
                     </div>
                     <div className="single__card">
                         <img src="https://random.imagecdn.app/500/390"></img>
-                        <Star />
+
                         <div className="pricce">
                             <h2>${product?.price}</h2>
                             <h3>$534,33</h3>

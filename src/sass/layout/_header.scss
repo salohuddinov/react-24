@@ -15,67 +15,73 @@
     justify-content: space-between;
     transition: 0.25s ease-in;
 
-    &__logo {
-      width: 200px;
-    }
-
     &__actions {
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 10px;
 
       &__button {
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 7px;
-        background: #eeeeee;
-        transition: .3s ease-in;
-        margin: 10px 7px;
-        gap: 5px;
-        color: #84bcea;
+        gap: 10px;
+        width: 153px;
+        height: 50px;
+        border-radius: 100px;
+        background: rgb(69, 69, 69);
+
+        &__p {
+          color: rgb(255, 255, 255);
+          font-family: Manrope;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 22px;
+          letter-spacing: 0%;
+          text-align: left;
+        }
       }
 
       .nav__actions__button:hover {
-        background: #c2daee;
-        color: #60a9e6;
+        background: #eee;
       }
 
       .nav__search__box {
         display: flex;
-        width: 550px;
-        height: 45px;
-        display: flex;
+        width: 500px;
+        height: 50px;
+        justify-content: space-between;
         align-items: center;
-        border-radius: 5px;
         overflow: hidden;
-        background: #fff;
-        border: 1px solid #ddd;
+        border: 1px solid rgb(69, 69, 69);
+        border-radius: 100px;
+        padding: 0 22px;
+
 
         @media (max-width: 900px) {
-          width: 50px;
-          background-color: transparent;
+          width: 100%;
         }
 
         .nav__search__input {
           width: 100%;
-          height: 100%;
+          max-width: 155px;
+          height: 22px;
           outline: none;
           border: none;
-          font-size: 14px;
-          font-weight: 400;
-          line-height: 18px;
-          color: #000;
-          padding: 10px 20px;
-          background-color: transparent;
+          color: rgb(69, 69, 69);
+          font-family: Manrope;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 22px;
+          letter-spacing: 0%;
+          text-align: left;
+          opacity: 0.3;
 
           @media (max-width: 900px) {
-            display: none;
+            width: 100%;
           }
         }
 
         .nav__input__button {
-          width: 150px;
           height: 100%;
           display: flex;
           justify-content: center;
@@ -83,16 +89,11 @@
           font-size: 20px;
           border: none;
           border-radius: 0 5px 5px 0;
-          color: #4a4a4a;
-          background-color: #eeeeee;
+          background: transparent;
 
           @media (max-width: 900px) {
             font-size: 24px;
           }
-        }
-
-        .nav__input__button:hover {
-          background-color: #dadada;
         }
       }
     }
@@ -103,47 +104,67 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 
   .nav__button {
     display: flex;
+    flex-wrap: wrap;
+    width: 68px;
+    height: 41px;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     background: transparent;
     transition: .3s ease-in;
 
-    .nav__wishlist__link,
-    .nav__cart__link {
+    .nav__wishlist__link {
       display: flex;
-      align-items: center;
-      font-size: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
       position: relative;
-      margin: 7px 5px;
-      gap: 5px;
-      color: #000;
 
-      span {
+      &__icon {
+        display: flex;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        color: rgb(69, 69, 69);
+      }
+
+      .sup__p {
         position: absolute;
-        top: -7px;
-        right: -8px;
-        width: 17px;
-        height: 17px;
+        top: -3px;
+        right: -5px;
+        width: 14px;
+        height: 14px;
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 14px;
+        font-size: 13px;
         color: #fff;
         background-color: red;
       }
     }
+
+    &__p {
+      width: 68px;
+      height: 17px;
+      color: rgb(69, 69, 69);
+      font-family: Manrope;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: 0%;
+      text-align: center;
+    }
+  }
+
+  .nav__button:hover {
+    background: #eeeeee;
   }
 }
 
-.nav__button:hover {
-  background: #eeeeee;
-}
 
 .nav__shrink {
   height: 65px;

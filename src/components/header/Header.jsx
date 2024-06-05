@@ -1,14 +1,16 @@
 import React, { memo, useState, useEffect } from 'react';
 import axios from 'axios';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import logo from '../../images/logo.png'
 import HeaderTop from '../headertop/HeaderTop';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import logo from '../../images/logo.svg'
+import ant from '../../images/ant.svg'
+import like from '../../images/like.svg'
+import cart from '../../images/cart.svg'
+import menu from '../../images/menu.svg'
+import searrch from '../../images/search.svg'
+
 
 
 export default memo(function Header() {
@@ -63,8 +65,8 @@ export default memo(function Header() {
                     <div className="nav__actions">
                         <button className='nav__actions__button'>
                             <NavLink to={"#"} className="nav__actions__button">
-                                <SubscriptionsOutlinedIcon className='nav__icon' />
-                                <p>Katalog</p>
+                                <img src={menu} alt="jdsjb" />
+                                <p className='nav__actions__button__p'>Каталог</p>
                             </NavLink>
                         </button>
                         <div className='nav__search__box'>
@@ -73,10 +75,10 @@ export default memo(function Header() {
                                 value={searchValue}
                                 onChange={(e) => setSearchValue(e.target.value)}
                                 className="nav__search__input"
-                                placeholder="hasbro"
+                                placeholder="Поиск по товарам"
                             />
                             <button className='nav__input__button'>
-                                <SearchOutlinedIcon />
+                                <img src={searrch} alt="jdsjbdj" />
                             </button>
                             <ul className='serch__const'>
                                 {
@@ -99,38 +101,34 @@ export default memo(function Header() {
                         </div>
                     </div>
                     <div className="nav__right">
-                        <button className='nav__button'>
-                            <NavLink to={"/admin"} className="nav__wishlist__link">
-                                <PersonOutlineOutlinedIcon className='nav__icon' />
-                                <p>Kirish</p>
-                            </NavLink>
-                        </button>
-                        <button className='nav__button'>
-                            <NavLink to="/wishlist" className="nav__wishlist__link">
-                                <FavoriteBorderOutlinedIcon className='nav__icon' />
+                        <Link to={"/wishlist"} className='nav__button'>
+                            <div className="nav__wishlist__link">
+                                <img className='nav__wishlist__link__icon' src={like} alt="jsjsbjs" />
                                 {wishes.length > 0 ? (
-                                    <sup>
-                                        <span className='sup__p'>{wishes.length}</span>
-                                    </sup>
+                                    <span className='sup__p'>{wishes.length}</span>
                                 ) : (
                                     <></>
                                 )}
-                                <p>Saralangan</p>
-                            </NavLink>
-                        </button>
-                        <button className='nav__button'>
-                            <NavLink to="/cart" className="nav__cart__link">
-                                <ShoppingBagOutlinedIcon className='nav__icon' />
+                            </div>
+                            <p className='nav__button__p'>Избранное</p>
+                        </Link>
+                        <Link className='nav__button' to={"/admin"}>
+                            <div className="nav__wishlist__link">
+                                <img className='nav__wishlist__link__icon' src={ant} alt="" />
+                                <p className='nav__button__p'>Сравнение</p>
+                            </div>
+                        </Link>
+                        <Link to={"/cart"} className='nav__button'>
+                            <div className="nav__wishlist__link">
+                                <img className='nav__wishlist__link__icon' src={cart} alt="jsbah" />
                                 {carts.length > 0 ? (
-                                    <sup>
-                                        <span className='sup__p'>{carts.length}</span>
-                                    </sup>
+                                    <span className='sup__p'>{carts.length}</span>
                                 ) : (
                                     <></>
                                 )}
-                                <p>Savat</p>
-                            </NavLink>
-                        </button>
+                                <p className='nav__button__p'>Корзина</p>
+                            </div>
+                        </Link>
                     </div>
                 </nav>
             </header >

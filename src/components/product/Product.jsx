@@ -1,79 +1,46 @@
-import React, { useState, useEffect } from "react"
+import React, { memo } from "react"
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleToWishes } from "../../context/wishlistSlice";
 import { addToCart } from "../../context/cartSlice";
-import { API_URL } from "../../static"
-import axios from "../../api"
-import Skeleton from '../skeleton/Skeleton'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import StarPurple500SharpIcon from '@mui/icons-material/StarPurple500Sharp';
-const Product = ({ data }) => {
-    const [count, setCount] = useState(4)
-    const [loading, setLoading] = useState(false)
-    const [categoryValue, setCategoryValue] = useState("all")
+import EastIcon from '@mui/icons-material/East';
 
+
+const Product = ({ data }) => {
     const dispatch = useDispatch();
     const wishes = useSelector((state) => state.wishlist.value);
     const cart = useSelector((state) => state.cart.value);
 
-    useEffect(() => {
-        axios
-            .get(`${API_URL}/categories`)
-            .then(res => setCategories(res.data))
-            .catch(err => console.log(err))
-    }, [])
-
-    useEffect(() => {
-        setLoading(true)
-        let url = categoryValue === "all" ?
-            `${API_URL}?limit=${count}` :
-            `${API_URL}/category/${categoryValue}?limit=${count}`
-        axios
-            .get(url)
-            .then(res => setData(res.data))
-            .catch(err => console.log(err))
-            .finally(() => setLoading(false))
-    }, [count, categoryValue])
-
-
     let products = data?.map((el) => (
-        <div key={el.id} className="cardd">
-            <div class="card">
-                <div class="icon">
-                    <img className='image' src={el.thumbnail} alt="" />
-                </div>
-                <span>
-                    <button className='like__button' onClick={() => dispatch(addToCart(el))}>
-                        {
-                            cart.some(c => c.id === el.id) ?
-                                <ShoppingCartRoundedIcon /> :
-                                <ShoppingCartOutlinedIcon />
-                        }
-                    </button>
-                    <button className='cart__button' onClick={() => dispatch(toggleToWishes(el))}>
-                        {
-                            wishes.some(w => w.id === el.id) ?
-                                <FavoriteIcon /> :
-                                <FavoriteBorderIcon />
-                        }
-                    </button>
-                </span>
-            </div>
+        <div key={el.id} className="card">
+            <button className='card__like__button' onClick={() => dispatch(toggleToWishes(el))}>
+                {
+                    wishes.some(w => w.id === el.id) ?
+                        <FavoriteIcon /> :
+                        <FavoriteBorderIcon />
+                }
+            </button>
+            <img className='card__image' src={el.thumbnail} alt="" />
+
             <Link to={`/single/${el.id}`}>
-                <h4 className='title'>{el.description}</h4>
+                <h4 className='card__title__h4'>{el.title}</h4>
             </Link>
-            <div className="count">
-                <button className="count__button"><StarPurple500SharpIcon /></button>
-                <p className="count__p">{el.rating}</p>
-                <p className="count__pp">{el.brand}</p>
-            </div>
-            <div className="costm">
-                <p className="oldprice">{el.discountPercentage} UZS</p>
-                <p className="prise">{el.price} UZS </p>
+            <div className="card__costm">
+                <div className="card__costm__left">
+                    <p className="card__costm__left__old">{el.discountPercentage} ₽</p>
+                    <p className="card__costm__left__price">{el.price} ₽ </p>
+                </div>
+                <button className='card__costm__right' onClick={() => dispatch(addToCart(el))}>
+                    {
+                        cart.some(c => c.id === el.id) ?
+                            <ShoppingCartRoundedIcon className="card__costm__right__icon" /> :
+                            <ShoppingCartOutlinedIcon className="card__costm__right__icon" />
+                    }
+                </button>
             </div>
         </div>
     ));
@@ -82,8 +49,21 @@ const Product = ({ data }) => {
     return (
         <>
             <div className="container">
+                <div className="catalog__title">
+                    <p className='catalog__title__p'>Популярные товары</p>
+                    <button className='catalog__title__button'>Весь каталог <EastIcon /> </button>
+                </div>
+                <div className="category">
+                    <p className="category__p">Светильники</p>
+                    <p className="category__p">Люстры</p>
+                    <p className="category__p">Лампы</p>
+                    <p className="category__p">Настольные лампы</p>
+                    <p className="category__p">Ночники</p>
+                    <p className="category__p">Подстветка</p>
+                    <p className="category__p">Уличное освещение</p>
+                    <p className="category__p">Мебельные установки</p>
+                </div>
                 <div className="product">
-                    {loading && <Skeleton />}
                     <div className="product__wrapper">{products}</div>
                 </div>
             </div>
@@ -91,4 +71,4 @@ const Product = ({ data }) => {
     )
 }
 
-export default Product
+export default memo(Product)
